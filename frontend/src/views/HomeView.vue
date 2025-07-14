@@ -1,25 +1,26 @@
 <template>
   <div class="min-h-screen cafe-bg">
     <!-- Hero Section -->
-    <section class="relative py-20 px-4">
+    <section class="hero-section relative py-24 px-4">
       <div class="max-w-6xl mx-auto text-center">
-        <h1 class="text-5xl font-bold forest-green mb-6">Apaiser Café</h1>
-        <p class="text-xl text-gray-700 mb-8">森の中の穏やかなカフェで、心安らぐひとときを</p>
-        <div class="flex justify-center space-x-4">
+        <h1 class="text-6xl font-bold coffee-brown mb-8 tracking-wide">Apaiser Café</h1>
+        <p class="text-2xl forest-green mb-12 font-light leading-relaxed">森の中の穏やかなカフェで、心安らぐひとときを</p>
+        <div class="flex justify-center space-x-6">
           <button 
             @click="scrollToReservation"
-            class="bg-green-600 text-white px-8 py-3 rounded-lg hover:bg-green-700 transition-colors"
+            class="wood-texture text-cream-text px-10 py-4 rounded-full hover:shadow-lg transition-all duration-300 font-semibold text-lg warm-shadow"
           >
             ご予約はこちら
           </button>
           <button 
             @click="scrollToMenu"
-            class="bg-amber-600 text-white px-8 py-3 rounded-lg hover:bg-amber-700 transition-colors"
+            class="bg-amber-700 text-cream-text px-10 py-4 rounded-full hover:bg-amber-800 transition-all duration-300 font-semibold text-lg warm-shadow"
           >
             メニューを見る
           </button>
         </div>
       </div>
+      <div class="section-divider"></div>
     </section>
 
     <!-- About Section -->
@@ -40,120 +41,137 @@
     </section>
 
     <!-- Announcements Section -->
-    <section class="py-16 px-4 bg-white bg-opacity-50">
+    <section class="py-20 px-4">
       <div class="max-w-4xl mx-auto">
-        <h2 class="text-3xl font-bold forest-green mb-8 text-center">お知らせ</h2>
-        <div class="space-y-6">
+        <div class="text-center mb-12">
+          <h2 class="text-4xl font-bold coffee-brown mb-4">お知らせ</h2>
+          <div class="flex justify-center items-center">
+            <span class="coffee-bean"></span>
+            <span class="coffee-bean"></span>
+            <span class="coffee-bean"></span>
+          </div>
+        </div>
+        <div class="space-y-8">
           <div 
             v-for="announcement in announcements.slice(0, 3)" 
             :key="announcement.id"
-            class="cafe-card rounded-lg p-6"
+            class="cafe-card organic-shape p-8 warm-shadow"
           >
-            <h3 class="text-xl font-semibold warm-brown mb-2">{{ announcement.title }}</h3>
-            <p class="text-gray-700 mb-2">{{ announcement.content }}</p>
-            <p class="text-sm text-gray-500">{{ formatDate(announcement.created_at) }}</p>
+            <h3 class="text-2xl font-semibold warm-brown mb-4">{{ announcement.title }}</h3>
+            <p class="text-gray-700 mb-4 leading-relaxed text-lg">{{ announcement.content }}</p>
+            <p class="text-sm coffee-brown font-medium">{{ formatDate(announcement.created_at) }}</p>
           </div>
         </div>
-        <div class="text-center mt-8">
+        <div class="text-center mt-12">
           <router-link 
             to="/announcements" 
-            class="text-green-600 hover:text-green-700 font-medium"
+            class="coffee-brown hover:warm-brown font-semibold text-lg transition-colors duration-300"
           >
             すべてのお知らせを見る →
           </router-link>
         </div>
       </div>
+      <div class="section-divider"></div>
     </section>
 
     <!-- Menu Section -->
-    <section id="menu" class="py-16 px-4">
+    <section id="menu" class="py-20 px-4">
       <div class="max-w-6xl mx-auto">
-        <h2 class="text-3xl font-bold forest-green mb-12 text-center">メニュー</h2>
-        <div class="grid md:grid-cols-2 gap-8">
-          <div class="cafe-card rounded-lg p-6">
-            <h3 class="text-2xl font-semibold warm-brown mb-4">ドリンク</h3>
-            <div class="space-y-3">
-              <div class="flex justify-between">
-                <span>ブレンドコーヒー</span>
-                <span class="font-medium">¥450</span>
+        <div class="text-center mb-16">
+          <h2 class="text-4xl font-bold coffee-brown mb-4">メニュー</h2>
+          <div class="flex justify-center items-center">
+            <span class="coffee-bean"></span>
+            <span class="coffee-bean"></span>
+            <span class="coffee-bean"></span>
+          </div>
+        </div>
+        <div class="grid md:grid-cols-2 gap-12">
+          <div class="cafe-card wood-texture p-8 warm-shadow">
+            <h3 class="text-3xl font-semibold cream-text mb-6 text-center">ドリンク</h3>
+            <div class="space-y-4">
+              <div class="flex justify-between items-center py-2 border-b border-amber-200">
+                <span class="cream-text text-lg">ブレンドコーヒー</span>
+                <span class="font-bold cream-text text-xl">¥450</span>
               </div>
-              <div class="flex justify-between">
-                <span>カフェラテ</span>
-                <span class="font-medium">¥520</span>
+              <div class="flex justify-between items-center py-2 border-b border-amber-200">
+                <span class="cream-text text-lg">カフェラテ</span>
+                <span class="font-bold cream-text text-xl">¥520</span>
               </div>
-              <div class="flex justify-between">
-                <span>季節限定 桜ラテ</span>
-                <span class="font-medium">¥580</span>
+              <div class="flex justify-between items-center py-2 border-b border-amber-200">
+                <span class="cream-text text-lg">季節限定 桜ラテ</span>
+                <span class="font-bold cream-text text-xl">¥580</span>
               </div>
-              <div class="flex justify-between">
-                <span>紅茶各種</span>
-                <span class="font-medium">¥400</span>
+              <div class="flex justify-between items-center py-2">
+                <span class="cream-text text-lg">紅茶各種</span>
+                <span class="font-bold cream-text text-xl">¥400</span>
               </div>
             </div>
           </div>
-          <div class="cafe-card rounded-lg p-6">
-            <h3 class="text-2xl font-semibold warm-brown mb-4">フード・デザート</h3>
-            <div class="space-y-3">
-              <div class="flex justify-between">
-                <span>手作りチーズケーキ</span>
-                <span class="font-medium">¥480</span>
+          <div class="cafe-card wood-texture p-8 warm-shadow">
+            <h3 class="text-3xl font-semibold cream-text mb-6 text-center">フード・デザート</h3>
+            <div class="space-y-4">
+              <div class="flex justify-between items-center py-2 border-b border-amber-200">
+                <span class="cream-text text-lg">手作りチーズケーキ</span>
+                <span class="font-bold cream-text text-xl">¥480</span>
               </div>
-              <div class="flex justify-between">
-                <span>抹茶チーズケーキ</span>
-                <span class="font-medium">¥520</span>
+              <div class="flex justify-between items-center py-2 border-b border-amber-200">
+                <span class="cream-text text-lg">抹茶チーズケーキ</span>
+                <span class="font-bold cream-text text-xl">¥520</span>
               </div>
-              <div class="flex justify-between">
-                <span>本日のケーキ</span>
-                <span class="font-medium">¥450</span>
+              <div class="flex justify-between items-center py-2 border-b border-amber-200">
+                <span class="cream-text text-lg">本日のケーキ</span>
+                <span class="font-bold cream-text text-xl">¥450</span>
               </div>
-              <div class="flex justify-between">
-                <span>サンドイッチセット</span>
-                <span class="font-medium">¥780</span>
+              <div class="flex justify-between items-center py-2">
+                <span class="cream-text text-lg">サンドイッチセット</span>
+                <span class="font-bold cream-text text-xl">¥780</span>
               </div>
             </div>
           </div>
         </div>
       </div>
+      <div class="section-divider"></div>
     </section>
 
     <!-- Business Hours & Access -->
-    <section class="py-16 px-4 bg-white bg-opacity-50">
+    <section class="py-20 px-4">
       <div class="max-w-6xl mx-auto">
-        <div class="grid md:grid-cols-2 gap-12">
+        <div class="grid md:grid-cols-2 gap-16">
           <!-- Business Hours -->
-          <div class="cafe-card rounded-lg p-6">
-            <h3 class="text-2xl font-semibold forest-green mb-4">営業時間</h3>
-            <div class="space-y-2">
-              <div class="flex justify-between">
-                <span>平日</span>
-                <span>9:00 - 20:00</span>
+          <div class="cafe-card organic-shape p-8 warm-shadow">
+            <h3 class="text-3xl font-semibold coffee-brown mb-6 text-center">営業時間</h3>
+            <div class="space-y-4">
+              <div class="flex justify-between items-center py-3 border-b border-amber-200">
+                <span class="text-lg forest-green">平日</span>
+                <span class="font-semibold text-lg coffee-brown">9:00 - 20:00</span>
               </div>
-              <div class="flex justify-between">
-                <span>土日祝</span>
-                <span>9:00 - 21:00</span>
+              <div class="flex justify-between items-center py-3 border-b border-amber-200">
+                <span class="text-lg forest-green">土日祝</span>
+                <span class="font-semibold text-lg coffee-brown">9:00 - 21:00</span>
               </div>
-              <div class="mt-4 text-sm text-gray-600">
-                <p>定休日: 毎週火曜日</p>
-                <p>※祝日の場合は営業いたします</p>
+              <div class="mt-6 text-center">
+                <p class="text-warm-brown font-medium">定休日: 毎週火曜日</p>
+                <p class="text-sm text-gray-600 mt-2">※祝日の場合は営業いたします</p>
               </div>
             </div>
           </div>
 
           <!-- Contact Info -->
-          <div class="cafe-card rounded-lg p-6">
-            <h3 class="text-2xl font-semibold forest-green mb-4">アクセス・お問い合わせ</h3>
-            <div class="space-y-2">
-              <p><strong>住所:</strong> 栃木県宇都宮市塙田1-1-20</p>
-              <p><strong>電話:</strong> 028-623-1234</p>
-              <p><strong>メール:</strong> info@apaiser-cafe.com</p>
-              <p class="text-sm text-gray-600 mt-4">
-                栃木県庁より徒歩5分<br>
-                駐車場完備（20台）
-              </p>
+          <div class="cafe-card organic-shape p-8 warm-shadow">
+            <h3 class="text-3xl font-semibold coffee-brown mb-6 text-center">アクセス・お問い合わせ</h3>
+            <div class="space-y-4">
+              <p class="text-lg"><strong class="coffee-brown">住所:</strong> <span class="forest-green">栃木県宇都宮市塙田1-1-20</span></p>
+              <p class="text-lg"><strong class="coffee-brown">電話:</strong> <span class="forest-green">028-623-1234</span></p>
+              <p class="text-lg"><strong class="coffee-brown">メール:</strong> <span class="forest-green">info@apaiser-cafe.com</span></p>
+              <div class="mt-6 text-center">
+                <p class="text-warm-brown font-medium">栃木県庁より徒歩5分</p>
+                <p class="text-warm-brown font-medium">駐車場完備（20台）</p>
+              </div>
             </div>
           </div>
         </div>
       </div>
+      <div class="section-divider"></div>
     </section>
 
     <!-- Google Maps -->
@@ -177,47 +195,54 @@
     </section>
 
     <!-- Reservation Section -->
-    <section id="reservation" class="py-16 px-4 bg-white bg-opacity-50">
-      <div class="max-w-2xl mx-auto">
-        <h2 class="text-3xl font-bold forest-green mb-8 text-center">ご予約</h2>
-        <div class="cafe-card rounded-lg p-8">
-          <form @submit.prevent="submitReservation" class="space-y-6">
+    <section id="reservation" class="py-20 px-4">
+      <div class="max-w-3xl mx-auto">
+        <div class="text-center mb-12">
+          <h2 class="text-4xl font-bold coffee-brown mb-4">ご予約</h2>
+          <div class="flex justify-center items-center">
+            <span class="coffee-bean"></span>
+            <span class="coffee-bean"></span>
+            <span class="coffee-bean"></span>
+          </div>
+        </div>
+        <div class="cafe-card organic-shape p-10 warm-shadow">
+          <form @submit.prevent="submitReservation" class="space-y-8">
             <div>
-              <label class="block text-sm font-medium text-gray-700 mb-2">お名前 *</label>
+              <label class="block text-lg font-semibold coffee-brown mb-3">お名前 *</label>
               <input
                 v-model="reservation.name"
                 type="text"
                 required
-                class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500"
+                class="w-full px-4 py-3 border-2 border-amber-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-amber-500 focus:border-amber-500 text-lg"
               />
             </div>
             
             <div>
-              <label class="block text-sm font-medium text-gray-700 mb-2">電話番号 *</label>
+              <label class="block text-lg font-semibold coffee-brown mb-3">電話番号 *</label>
               <input
                 v-model="reservation.phone"
                 type="tel"
                 required
-                class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500"
+                class="w-full px-4 py-3 border-2 border-amber-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-amber-500 focus:border-amber-500 text-lg"
               />
             </div>
             
             <div>
-              <label class="block text-sm font-medium text-gray-700 mb-2">メールアドレス *</label>
+              <label class="block text-lg font-semibold coffee-brown mb-3">メールアドレス *</label>
               <input
                 v-model="reservation.email"
                 type="email"
                 required
-                class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500"
+                class="w-full px-4 py-3 border-2 border-amber-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-amber-500 focus:border-amber-500 text-lg"
               />
             </div>
             
             <div>
-              <label class="block text-sm font-medium text-gray-700 mb-2">人数 *</label>
+              <label class="block text-lg font-semibold coffee-brown mb-3">人数 *</label>
               <select
                 v-model="reservation.party_size"
                 required
-                class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500"
+                class="w-full px-4 py-3 border-2 border-amber-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-amber-500 focus:border-amber-500 text-lg"
               >
                 <option value="">選択してください</option>
                 <option v-for="i in 8" :key="i" :value="i">{{ i }}名</option>
@@ -225,21 +250,21 @@
             </div>
             
             <div>
-              <label class="block text-sm font-medium text-gray-700 mb-2">予約日時 *</label>
+              <label class="block text-lg font-semibold coffee-brown mb-3">予約日時 *</label>
               <input
                 v-model="reservation.reservation_date"
                 type="datetime-local"
                 required
-                class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500"
+                class="w-full px-4 py-3 border-2 border-amber-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-amber-500 focus:border-amber-500 text-lg"
               />
             </div>
             
             <div>
-              <label class="block text-sm font-medium text-gray-700 mb-2">備考</label>
+              <label class="block text-lg font-semibold coffee-brown mb-3">備考</label>
               <textarea
                 v-model="reservation.notes"
-                rows="3"
-                class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500"
+                rows="4"
+                class="w-full px-4 py-3 border-2 border-amber-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-amber-500 focus:border-amber-500 text-lg"
                 placeholder="アレルギーやご要望などがございましたらお書きください"
               ></textarea>
             </div>
@@ -247,13 +272,13 @@
             <button
               type="submit"
               :disabled="isSubmitting"
-              class="w-full bg-green-600 text-white py-3 px-4 rounded-md hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-500 disabled:opacity-50"
+              class="w-full wood-texture cream-text py-4 px-6 rounded-lg hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-amber-500 disabled:opacity-50 text-xl font-semibold warm-shadow transition-all duration-300"
             >
               {{ isSubmitting ? '送信中...' : '予約を送信' }}
             </button>
           </form>
           
-          <div v-if="reservationMessage" class="mt-4 p-4 rounded-md" :class="reservationMessageClass">
+          <div v-if="reservationMessage" class="mt-6 p-4 rounded-lg" :class="reservationMessageClass">
             {{ reservationMessage }}
           </div>
         </div>
